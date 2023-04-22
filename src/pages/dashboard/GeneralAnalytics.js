@@ -21,34 +21,54 @@ export default function GeneralAnalytics() {
   const getData = async () => {
     const resp = await getMediaStatisticAPI();
 
-    if (resp.code === '200')
-      setStatistic(resp.data);
+    if (resp.code === '200') setStatistic(resp.data);
   };
 
-  useEffect(() => { getData(); }, []);
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
-    <Page title={translate("menu.dashboard")}>
+    <Page title={translate('menu.dashboard')}>
       <Container maxWidth={themeStretch ? false : 'xl'}>
         <Typography variant="h4" sx={{ mb: 5 }}>
-          Hi, Welcome back
+          Chào Mừng
         </Typography>
 
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={3}>
-            <AnalyticsWidgetSummary title={translate("menu.situation")} total={statistic.videos} icon={'material-symbols:slow-motion-video'} />
+            <AnalyticsWidgetSummary
+              title={translate('menu.situation')}
+              total={statistic.videos}
+              icon={'material-symbols:slow-motion-video'}
+            />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AnalyticsWidgetSummary title={translate("gplx.situation.duration")} total={statistic.durations / 60} color="warning" icon={'ic:baseline-access-time'} />
+            <AnalyticsWidgetSummary
+              title={translate('gplx.situation.duration')}
+              total={statistic.durations / 60}
+              color="warning"
+              icon={'ic:baseline-access-time'}
+            />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AnalyticsWidgetSummary title={translate("button.view")} total={statistic.views} color="error" icon={'ic:outline-remove-red-eye'} />
+            <AnalyticsWidgetSummary
+              title={translate('button.view')}
+              total={statistic.views}
+              color="error"
+              icon={'ic:outline-remove-red-eye'}
+            />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AnalyticsWidgetSummary title={translate("menu.user")} total={statistic.users} color="info" icon={'mdi:user-group'} />
+            <AnalyticsWidgetSummary
+              title={translate('menu.user')}
+              total={statistic.users}
+              color="info"
+              icon={'mdi:user-group'}
+            />
           </Grid>
           <Grid item xs={12} md={12} lg={12}>
             <AnalyticsVideoUpdate />
